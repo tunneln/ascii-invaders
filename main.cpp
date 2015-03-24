@@ -97,8 +97,10 @@ int main(int argc, char const *argv[])
 		}
 	}
 	int highscore;
-	std::fstream file("highscore.txt");
-	file >> highscore;	
+	std::ifstream filei("highscore.txt");
+	filei >> highscore;
+	filei.close();
+	std::ofstream fileo("highscore.txt");	
 	if(has_colors() == false)
 	{
 		endwin();
@@ -140,8 +142,8 @@ int main(int argc, char const *argv[])
 		}
 
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//LOOP FOR GAME
 		while (!quit && lives)
 		{
@@ -156,7 +158,7 @@ int main(int argc, char const *argv[])
 			}
 			ticks++;
 
-			////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//SET/MOVE PLAYER POSITION AND ADD PLAYER PROJECTILES
 
 			/*         if(player.getY()!=1 && ch==KEY_UP){ 		DON'T ALLOW UP AND DOWN MOVEMENT  */
@@ -178,8 +180,9 @@ int main(int argc, char const *argv[])
 
 			if(ch==' ' && playerP.size() <= 5){ 
 				playerP.push_back(Projectile(player.getX(), player.getY()-1, '|'));
+				beep();
 			}
-
+			
 			//CHECKS IF GAME WAS QUIT
 			if(ch=='q') quit = true;
 
@@ -191,7 +194,7 @@ int main(int argc, char const *argv[])
 				}
 			}
 
-			////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//++++++++++MOVE ALL ENEMIES, PROJECTILES, AND *BLOCKS++++++++++
 
 			//MOVE ALL ENEMIES
@@ -385,7 +388,7 @@ int main(int argc, char const *argv[])
 			move(0,0); /// move cursor to 0,0 (looks prettier if os doesn't allow invisible cursors)
 	
 			if(quit == true && enemies.empty()){
-				file << points;
+				fileo << points;
 				while(quit==true){
 					wee++;
 	        			ch = getch(); //waits for a keypress and takes it in
@@ -437,7 +440,7 @@ int main(int argc, char const *argv[])
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 
-	if(quit == true && !enemies.empty()){ 
+	if(quit == true && !enemies.empty()){
 		while(quit == true){
 			wee++;
         		ch = getch(); //waits for a keypress and takes it in
@@ -471,7 +474,7 @@ int main(int argc, char const *argv[])
 	}
 	if(has_colors() == true)
 		endwin();  /// cleanup the window
-	file.close();
+	fileo.close();
 
 	return 0;
 }
