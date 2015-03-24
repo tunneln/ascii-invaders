@@ -47,7 +47,6 @@ int main(int argc, char const *argv[])
 	int static ticks = 0;
 	int rows = 2; int cols = 11;
 	bool flag; int test = true; int down = 0; 
-	int blah = 0;
 	char border[] = "#"; int lives = 3;
 
 	PlayerShip player(xMAX-cols+2, yMAX+2);
@@ -212,9 +211,13 @@ int main(int argc, char const *argv[])
 					break;
 				}
 
-				if(down==1 && blah < 60){
+				if(down==1){
 					enemiesIter->timeStep(2); // move down
-					blah++;
+					if(test)
+						enemiesIter->timeStep(0); //move right
+					else
+						enemiesIter->timeStep(1); //move left
+
 				}
 				else if(ticks%20==0){
 					if(test)
@@ -224,10 +227,7 @@ int main(int argc, char const *argv[])
 				}
 
 			}
-			if(blah > 59) 
-				blah = 0;
-			down = 0;
-	
+
 			//MOVE ALL PROJECTILES
 			
 			baddiesPIter = baddiesP.begin();
@@ -424,7 +424,13 @@ int main(int argc, char const *argv[])
 					if(ch=='q') quit = false;
 				}
 				quit = true;
-			}	
+			}
+		
+			if(down > 0){
+		 		nsleep(20*(delay-elapsedTime));
+				down = 0;
+			}
+
 		}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
