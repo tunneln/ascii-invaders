@@ -8,8 +8,10 @@ $./Ascii_Invaders
 
 #Screenshots
 
+###Intro Game Screen
 ![Alt text]( https://github.com/tunneln/Ascii_Invaders/blob/master/screenshots/game_intro.png "Intro Game Screen")
 
+### Gameplay
 ![Alt text](https://github.com/tunneln/Ascii_Invaders/blob/master/screenshots/gameplay_screenshot.png  "Gameplay")
 
 #Game Rules
