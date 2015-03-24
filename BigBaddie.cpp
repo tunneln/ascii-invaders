@@ -3,7 +3,8 @@
 
 BigBaddie::BigBaddie(){
 	rate = .45;
-	gun = '!';
+	gun = '&';
+	type = 'W';
 }
 
 BigBaddie::BigBaddie(int a, int b){
@@ -11,7 +12,7 @@ BigBaddie::BigBaddie(int a, int b){
 	y = b;
 	rate = .45;
 	type = 'W';
-	gun = '!';
+	gun = '&';
 }
 
 
