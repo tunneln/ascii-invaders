@@ -25,6 +25,6 @@ Use the **arrow keys** to move ship
 
 You have 3 lives and each enemyship has 2 lives
 
-Also note that the barracks only give partial protection
+Also note that the barracks only give partial protection.
 There is a percent chance for them to protect you
 
