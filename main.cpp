@@ -41,7 +41,7 @@ int main(int argc, char const *argv[])
 	const static int yMAX = 35; 	// Y MAX FOR BOARD DIMENSION
 
 	bool quit = false;
-	int ch = 0; int wee;
+	int ch = 0;
 	int points = 0;
 	int elapsedTime = getElapsedTime();
 	int static ticks = 0;
@@ -187,7 +187,8 @@ int main(int argc, char const *argv[])
 			if(ch=='q') quit = true;
 
 			//ADD/MAKE PROJECTILES FOR BADDIES
-			enemiesIter = enemies.begin(); for(; enemiesIter!=enemies.end(); enemiesIter++) {
+			enemiesIter = enemies.begin();
+		       	for(; enemiesIter!=enemies.end(); enemiesIter++) {
 				if ((rand() % 10000) < (100*enemiesIter->getRate())){
 					baddiesP.push_back(Projectile(enemiesIter->getX(), 
 								enemies.front().getY()+2, enemiesIter->getGun()));
@@ -198,11 +199,11 @@ int main(int argc, char const *argv[])
 			//++++++++++MOVE ALL ENEMIES, PROJECTILES, AND *BLOCKS++++++++++
 
 			//MOVE ALL ENEMIES
-			if((enemies.front().getX() == 1) && ticks%20==0){
+			if((enemies.front().getX() <= 1) && ticks%20==0){
 				test = true; 
 				down = 1;
 			} 		
-			if((enemies.back().getX() == xMAX*2+5) && ticks%20==0){
+			if((enemies.back().getX() >= xMAX*2+5) && ticks%20==0){
 				test = false;
 				down = 1;
 			}
@@ -390,7 +391,6 @@ int main(int argc, char const *argv[])
 			if(quit == true && enemies.empty()){
 				fileo << points;
 				while(quit==true){
-					wee++;
 	        			ch = getch(); //waits for a keypress and takes it in
 	        			erase(); /// erase the screen (after getch())
 	        			if ( ch != ERR) { /// user has a keypress
@@ -402,7 +402,7 @@ int main(int argc, char const *argv[])
 	        			}
 					init_pair(4, COLOR_GREEN, COLOR_BLACK);		//COLOR GREEN
 					attron(COLOR_PAIR(4));
-					mvaddstr(0,0,"	        __     ______  _    _        ");
+					mvaddstr(0,0,"	       __     ______  _    _        ");
 					mvaddstr(1,0,"         \\ \\   / / __ \\| |  | |       ");
 					mvaddstr(2,0,"          \\ \\_/ / |  | | |  | |       ");
 					mvaddstr(3,0,"           \\   /| |  | | |  | |       "); 
@@ -413,7 +413,7 @@ int main(int argc, char const *argv[])
 					mvaddstr(8,0,"           \\ \\/  \\/ /   | | | . ` | | "); 
 					mvaddstr(9,0,"            \\  /\\  /   _| |_| |\\  |_| "); 
 					mvaddstr(10,0,"             \\/  \\/   |_____|_| \\_(_) ");
-
+					attroff(COLOR_PAIR(4));
 					init_pair(10, COLOR_YELLOW, COLOR_BLACK);	//COLOR YELLOW
 					attron(COLOR_PAIR(10));
 					if(points > highscore){
@@ -429,7 +429,7 @@ int main(int argc, char const *argv[])
 				quit = true;
 			}
 		
-			if(down > 0){
+			if(down == 1){
 		 		nsleep(20*(delay-elapsedTime));
 				down = 0;
 			}
@@ -442,7 +442,6 @@ int main(int argc, char const *argv[])
 
 	if(quit == true && !enemies.empty()){
 		while(quit == true){
-			wee++;
         		ch = getch(); //waits for a keypress and takes it in
         		erase(); /// erase the screen (after getch())
         		if ( ch != ERR) { /// user has a keypress
@@ -469,6 +468,17 @@ int main(int argc, char const *argv[])
 			mvaddstr(11,0,"        |______\\____/|_____/   |_|  (_) ");
 			mvaddstr(12,0,"\n'q' to quit");
 			attroff(COLOR_PAIR(5));
+
+			init_pair(10, COLOR_YELLOW, COLOR_BLACK);	//COLOR YELLOW
+			attron(COLOR_PAIR(10));
+			if(points > highscore){
+			       	mvprintw(11, 20,"NEW HIGHSCORE!");
+				mvprintw(12, 20,"%i points", points);
+			}
+			attroff(COLOR_PAIR(10));
+			
+			mvaddstr(13,0,"\n'q' to quit");
+			attroff(COLOR_PAIR(4));
 			if(ch == 'q') quit = false;			
 		}		
 	}
