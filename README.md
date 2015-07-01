@@ -1,6 +1,8 @@
 #Get Started
 ```
-$ make
+$ git clone https://github.com/tunneln/Ascii_Invaders.git
+
+$ cd Ascii_Invaders && make
 
 $./Ascii_Invaders
 
