@@ -36,7 +36,7 @@ void EnemyShip::setRate(int r){
 }
 
 double EnemyShip::getRate(){
-	return rate;	
+	return rate;
 }
 
 char EnemyShip::getGun(){

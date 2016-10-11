@@ -13,7 +13,7 @@ class EnemyShip: public Ship{
 		EnemyShip(int, int, char, char);
 		virtual void timeStep(int);
 		void setRate(int);
-		double getRate();			
+		double getRate();
 		char getGun();
 		void setGun(char);
 

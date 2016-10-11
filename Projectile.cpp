@@ -3,15 +3,15 @@
 
 Projectile::Projectile(int a, int b, char t){
 	type = t;
-	x = a;		
-	y = b;	
+	x = a;
+	y = b;
 }
 
 Projectile::Projectile(int a, int b){
 	type = '|';
 	x = a;
 	y = b;
-} 
+}
 void Projectile::setShape(char t){
 	type = t;
 }

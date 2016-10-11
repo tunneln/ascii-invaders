@@ -5,7 +5,7 @@
 #include "GameObject.h"
 
 class Projectile: public GameObject{
-	
+
 	public:
 		Projectile(): type('|'){}
 		Projectile(char z): type(z){}

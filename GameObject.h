@@ -14,7 +14,7 @@ class GameObject{
 		virtual void setShape(char) = 0;
 
 		// Checks if x and y of either object collide
-		bool isCollision(const GameObject&) const; 	
+		bool isCollision(const GameObject&) const;
 		void setX(const int);
 		void setY(const int);
 		int getX() const;
@@ -23,7 +23,7 @@ class GameObject{
 		void decX();
 		void incY();
 		void incX();
-	
+
 	protected:
 		int x;
 		int y;

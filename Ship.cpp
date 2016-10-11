@@ -12,9 +12,9 @@ Ship::Ship(int a, int b){
 	y = b;
 }
 
-Ship::Ship(int a, int b, char t){ 
-	x = a;	
-	y = b;			
+Ship::Ship(int a, int b, char t){
+	x = a;
+	y = b;
 	type = t;
 }
 
@@ -23,9 +23,9 @@ void Ship::setShape(char t){
 }
 
 char Ship::getShape() const{
-	return type;	
+	return type;
 }
 
 void Ship::timeStep(int ticks){
 // UNDEFINED BEHAVIOR
-} 
+}

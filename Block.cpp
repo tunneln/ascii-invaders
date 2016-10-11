@@ -4,7 +4,7 @@ Block::Block(){
 	type = '#';
 	x = 0;
 	y = 0;
-}	
+}
 
 Block::Block(int a, int b){
 	type = '#';
@@ -22,9 +22,9 @@ char Block::getShape() const{
 
 void Block::timeStep(int ticks){
 	if(type == '#')
-		type = '='; 
+		type = '=';
 	if(type == '=')
-		type = '-'; 
+		type = '-';
 	if(type == '-')
 		type = 0;
 }

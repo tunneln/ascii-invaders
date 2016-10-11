@@ -5,7 +5,7 @@
 #include "GameObject.h"
 
 class Ship: public GameObject{
-	
+
 	public:
 		Ship();//Default ship type
 		Ship(char t): type(t){}
@@ -14,7 +14,7 @@ class Ship: public GameObject{
 		virtual void setShape(char);
 		virtual char getShape() const;
 		virtual void timeStep(int);
-	
+
 	protected:
 		char type;
 

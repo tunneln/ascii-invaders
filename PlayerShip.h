@@ -5,7 +5,7 @@
 #include "Ship.h"
 
 class PlayerShip: public Ship{
-	
+
 	public:
 		PlayerShip();
 		PlayerShip(int a, int b);
