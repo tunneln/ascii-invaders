@@ -12,8 +12,8 @@ all: $(SOURCES) $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
 	@$(CC) $(CFLAGS) $(SOURCES) -o $@ $(LIBS)
 
-#Test: $(EXECUTABLE)
-#	./$(EXECUTABLE)
+run: $(EXECUTABLE)
+	./$(EXECUTABLE)
 
 clean:
 	rm -rf *.o $(EXECUTABLE)
